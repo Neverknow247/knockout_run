@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://2wy4d8d5av0l"]
+
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_b4r3n"]
+
+[node name="ScoreItem" type="Panel"]
+custom_minimum_size = Vector2(1050, 50)
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_b4r3n")
+
+[node name="PlayerName" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 85.0
+offset_right = 729.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 42
+text = "1. Akamaru"
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 710.0
+offset_right = 1035.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 42
+text = "00:00:00:000"
+horizontal_alignment = 2
+vertical_alignment = 1

@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1t0msehhfmh"]
+
+[ext_resource type="Texture2D" uid="uid://doxojjbkt7ev6" path="res://assets/art/menus/Animatedv2.png" id="1_14a6c"]
+[ext_resource type="Script" path="res://menus/neverknow_splash.gd" id="2_12677"]
+[ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="3_g3g8u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hcjgm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5opi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_srade"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1d8ol"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3bce7"]
+
+[node name="neverknow_splash" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_14a6c")
+expand_mode = 2
+script = ExtResource("2_12677")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="transition" parent="." instance=ExtResource("3_g3g8u")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="easter_egg_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 738.0
+offset_top = 285.0
+offset_right = 1164.0
+offset_bottom = 663.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hcjgm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t5opi")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_srade")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1d8ol")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3bce7")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="easter_egg_button" to="." method="_on_easter_egg_button_pressed"]

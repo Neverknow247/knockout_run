@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://bckk7vobled6e"]
+
+[ext_resource type="Texture2D" uid="uid://becouanoainv8" path="res://assets/art/menus/sound_button.png" id="1_578cw"]
+[ext_resource type="Texture2D" uid="uid://dkdhp2ewb74hr" path="res://assets/art/menus/sound_button_hover.png" id="2_4ypvk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_he1wk"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("1_578cw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_80ibt"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_4ypvk")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pk4aj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvjm5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1jhap"]
+texture = ExtResource("2_4ypvk")
+
+[node name="volume_button" type="Button"]
+offset_right = 136.0
+offset_bottom = 136.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_he1wk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_80ibt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pk4aj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kvjm5")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1jhap")

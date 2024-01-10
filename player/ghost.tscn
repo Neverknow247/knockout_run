@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi3iml087cqgd"]
+
+[ext_resource type="Texture2D" uid="uid://cp17f2lkn5tee" path="res://assets/art/characters/runner.png" id="2_4mnjf"]
+
+[node name="ghost" type="CharacterBody2D"]
+modulate = Color(1, 1, 1, 0.117647)
+collision_layer = 0
+collision_mask = 0
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_4mnjf")

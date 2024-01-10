@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://cd0yf2yvb5lf7"]
+
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_4dybe"]
+[ext_resource type="Script" path="res://menus/skin_menu.gd" id="2_k32bh"]
+[ext_resource type="Texture2D" uid="uid://cp17f2lkn5tee" path="res://assets/art/characters/runner.png" id="9_tbtxo"]
+[ext_resource type="Texture2D" uid="uid://dy42vpahqimo6" path="res://assets/art/characters/runner_outline.png" id="10_lr2m2"]
+[ext_resource type="Theme" uid="uid://ca3ryc4sjsyug" path="res://menus/menu_theme_small.tres" id="11_vbhtx"]
+[ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="11_votxq"]
+
+[node name="skin_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4dybe")
+script = ExtResource("2_k32bh")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="textures" type="Control" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(650, 650)
+layout_mode = 2
+
+[node name="sprite" type="Sprite2D" parent="CenterContainer/HBoxContainer/textures"]
+position = Vector2(325, 325)
+scale = Vector2(20, 20)
+texture = ExtResource("9_tbtxo")
+
+[node name="sprite_outline" type="Sprite2D" parent="CenterContainer/HBoxContainer/textures"]
+position = Vector2(325, 325)
+scale = Vector2(20, 20)
+texture = ExtResource("10_lr2m2")
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 292.0
+offset_bottom = 123.0
+text = "← Back"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+layout_mode = 0
+offset_left = 1224.0
+offset_top = 768.0
+offset_right = 1424.0
+offset_bottom = 960.0
+theme = ExtResource("11_vbhtx")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+color = Color(1, 1, 1, 1)
+edit_alpha = false
+
+[node name="transition" parent="." instance=ExtResource("11_votxq")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
+[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]

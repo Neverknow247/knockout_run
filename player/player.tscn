@@ -1,0 +1,282 @@
+[gd_scene load_steps=14 format=3 uid="uid://kib21yto7yik"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_es81c"]
+[ext_resource type="Texture2D" uid="uid://cp17f2lkn5tee" path="res://assets/art/characters/runner.png" id="2_bkjmu"]
+[ext_resource type="Texture2D" uid="uid://upmn16xm07gw" path="res://assets/art/menus/arrow_up_focus.png" id="2_ifr66"]
+[ext_resource type="Texture2D" uid="uid://dy42vpahqimo6" path="res://assets/art/characters/runner_outline.png" id="3_aebkp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ohjub"]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lktxx"]
+radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8mwa"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="Animation" id="Animation_lddv2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("outline_sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("outline_sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_akeip"]
+resource_name = "squish"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.16667, 0.666667)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("outline_sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.16667, 0.666667)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.49012e-07, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("outline_sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.49012e-07, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r8bp1"]
+_data = {
+"RESET": SubResource("Animation_lddv2"),
+"squish": SubResource("Animation_akeip")
+}
+
+[sub_resource type="Animation" id="Animation_bqjyy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dash_sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7.10543e-15, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dash_sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25, 0.25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dash_sprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pbwjn"]
+resource_name = "dash_charge"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dash_sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.74755e-07, -6.00208), Vector2(7.10543e-15, -10), Vector2(7.10543e-15, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dash_sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.000129719, 0.25), Vector2(0.25, 0.25), Vector2(0.373515, 0.441724), Vector2(0.25, 0.25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dash_sprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.49, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.0941176), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sl8sc"]
+_data = {
+"RESET": SubResource("Animation_bqjyy"),
+"dash_charge": SubResource("Animation_pbwjn")
+}
+
+[node name="player" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 2
+safe_margin = 0.1
+script = ExtResource("1_es81c")
+
+[node name="dash_sprite" type="Sprite2D" parent="."]
+position = Vector2(7.10543e-15, -10)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ifr66")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_bkjmu")
+
+[node name="outline_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_aebkp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ohjub")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lktxx")
+
+[node name="camera_follow" type="RemoteTransform2D" parent="."]
+
+[node name="coyote_jump_timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="slide_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="move_tech_timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="start_level_area" type="Area2D" parent="."]
+position = Vector2(0, 6)
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="start_level_area"]
+position = Vector2(0, -0.05)
+shape = SubResource("RectangleShape2D_w8mwa")
+
+[node name="slide_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r8bp1")
+}
+autoplay = "RESET"
+
+[node name="dash_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sl8sc")
+}
+autoplay = "RESET"
+
+[connection signal="timeout" from="slide_timer" to="." method="_on_slide_timer_timeout"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="move_tech_timer" to="." method="_on_move_tech_timer_timeout"]
+[connection signal="area_exited" from="start_level_area" to="." method="_on_start_level_area_area_exited"]

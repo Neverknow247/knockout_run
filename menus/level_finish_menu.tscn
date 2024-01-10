@@ -1,0 +1,248 @@
+[gd_scene load_steps=11 format=3 uid="uid://budbi2xh55xtg"]
+
+[ext_resource type="Script" path="res://menus/level_finish_menu.gd" id="1_483c8"]
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_p4o5d"]
+[ext_resource type="Texture2D" uid="uid://f31wo0r2o6kq" path="res://assets/art/ui/no_badge.png" id="3_7xdfl"]
+[ext_resource type="Texture2D" uid="uid://cshqwmawwinc5" path="res://assets/art/ui/diamond_badge.png" id="4_eurfb"]
+[ext_resource type="Texture2D" uid="uid://bnsk6s4ppubnw" path="res://assets/art/ui/bronze_badge.png" id="4_ok87y"]
+[ext_resource type="Texture2D" uid="uid://ccdjyobfcp1hd" path="res://assets/art/ui/silver_badge.png" id="5_8djes"]
+[ext_resource type="Texture2D" uid="uid://brfv4g4w5svro" path="res://assets/art/ui/gold_badge.png" id="6_1dh34"]
+[ext_resource type="PackedScene" uid="uid://2wy4d8d5av0l" path="res://addons/silent_wolf/Scores/ScoreItem.tscn" id="8_5n64w"]
+[ext_resource type="PackedScene" uid="uid://bckk7vobled6e" path="res://menus/volume_button.tscn" id="9_b4w1s"]
+[ext_resource type="PackedScene" uid="uid://dehumamikbwdi" path="res://menus/volume_menu.tscn" id="10_kr77w"]
+
+[node name="level_finish_menu" type="ColorRect"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_p4o5d")
+color = Color(0, 0, 0, 0.980392)
+script = ExtResource("1_483c8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.5
+offset_top = 32.0
+offset_right = 208.5
+offset_bottom = 252.0
+grow_horizontal = 2
+theme_override_constants/separation = 12
+
+[node name="level_name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Level 1-1"
+horizontal_alignment = 1
+
+[node name="time_box" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="badge" type="TextureRect" parent="VBoxContainer/time_box"]
+layout_mode = 2
+expand_mode = 3
+
+[node name="new_time" type="Label" parent="VBoxContainer/time_box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "00:00:000"
+horizontal_alignment = 1
+
+[node name="new_best_time" type="Label" parent="VBoxContainer/time_box"]
+modulate = Color(0, 0.882353, 0.517647, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "NEW
+BEST!"
+horizontal_alignment = 1
+
+[node name="main" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="main_content" type="HBoxContainer" parent="main"]
+layout_mode = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="scores_and_xp" type="HBoxContainer" parent="main/main_content"]
+custom_minimum_size = Vector2(600, 700)
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="score" type="VBoxContainer" parent="main/main_content/scores_and_xp"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="best_time_section" type="HBoxContainer" parent="main/main_content/scores_and_xp/score"]
+layout_mode = 2
+alignment = 1
+
+[node name="best_time_badge" type="TextureRect" parent="main/main_content/scores_and_xp/score/best_time_section"]
+layout_mode = 2
+texture = ExtResource("3_7xdfl")
+expand_mode = 3
+
+[node name="time" type="VBoxContainer" parent="main/main_content/scores_and_xp/score/best_time_section"]
+layout_mode = 2
+
+[node name="best_time_label" type="Label" parent="main/main_content/scores_and_xp/score/best_time_section/time"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "00:00:000"
+
+[node name="label" type="Label" parent="main/main_content/scores_and_xp/score/best_time_section/time"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Best Time"
+
+[node name="medals" type="VBoxContainer" parent="main/main_content/scores_and_xp"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="diamond" type="HBoxContainer" parent="main/main_content/scores_and_xp/medals"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="main/main_content/scores_and_xp/medals/diamond"]
+layout_mode = 2
+texture = ExtResource("4_eurfb")
+expand_mode = 3
+
+[node name="diamond_time_label" type="Label" parent="main/main_content/scores_and_xp/medals/diamond"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "59:59:000"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="gold" type="HBoxContainer" parent="main/main_content/scores_and_xp/medals"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="main/main_content/scores_and_xp/medals/gold"]
+layout_mode = 2
+texture = ExtResource("6_1dh34")
+expand_mode = 3
+
+[node name="gold_time_label" type="Label" parent="main/main_content/scores_and_xp/medals/gold"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "59:59:000"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="silver" type="HBoxContainer" parent="main/main_content/scores_and_xp/medals"]
+layout_mode = 2
+alignment = 1
+
+[node name="silver_texture" type="TextureRect" parent="main/main_content/scores_and_xp/medals/silver"]
+layout_mode = 2
+texture = ExtResource("5_8djes")
+expand_mode = 3
+
+[node name="silver_time_label" type="Label" parent="main/main_content/scores_and_xp/medals/silver"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "59:59:000"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="bronze" type="HBoxContainer" parent="main/main_content/scores_and_xp/medals"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="main/main_content/scores_and_xp/medals/bronze"]
+layout_mode = 2
+texture = ExtResource("4_ok87y")
+expand_mode = 3
+
+[node name="bronze_time_label" type="Label" parent="main/main_content/scores_and_xp/medals/bronze"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "59:59:000"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="leaderboard" type="VBoxContainer" parent="main/main_content"]
+custom_minimum_size = Vector2(1000, 700)
+layout_mode = 2
+
+[node name="leaderboard_label" type="Label" parent="main/main_content/leaderboard"]
+layout_mode = 2
+text = "Leaderboards"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="main/main_content/leaderboard"]
+custom_minimum_size = Vector2(1050, 600)
+layout_mode = 2
+
+[node name="score_container" type="VBoxContainer" parent="main/main_content/leaderboard/ScrollContainer"]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+
+[node name="ScoreItem" parent="main/main_content/leaderboard/ScrollContainer/score_container" instance=ExtResource("8_5n64w")]
+layout_mode = 2
+
+[node name="buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 336.0
+offset_bottom = 252.0
+theme_override_constants/separation = 12
+
+[node name="restart_button" type="Button" parent="buttons"]
+custom_minimum_size = Vector2(288, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Restart Level"
+
+[node name="credits_button" type="Button" parent="buttons"]
+custom_minimum_size = Vector2(288, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Credits"
+
+[node name="main_menu_button" type="Button" parent="buttons"]
+custom_minimum_size = Vector2(288, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Main Menu"
+
+[node name="volume_button" parent="." instance=ExtResource("9_b4w1s")]
+visible = false
+layout_mode = 0
+offset_left = 1752.0
+offset_top = 32.0
+offset_right = 1888.0
+offset_bottom = 168.0
+
+[node name="volume_menu" parent="." instance=ExtResource("10_kr77w")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="buttons/restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="buttons/credits_button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="buttons/main_menu_button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="volume_button" to="." method="_on_volume_button_pressed"]
