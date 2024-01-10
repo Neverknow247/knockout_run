@@ -43,7 +43,7 @@ enabled=PackedStringArray("res://addons/github_to_itch/plugin.cfg", "res://addon
 [github_to_itch]
 
 config/itch_username="Neverknow247"
-config/itch_project_name="Knockout Run"
+config/itch_project_name="knockout-run"
 
 [input]
 
