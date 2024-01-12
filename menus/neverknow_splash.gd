@@ -14,6 +14,7 @@ var login_board = "res://addons/silent_wolf/Auth/Login.tscn"
 var menu_board = "res://menus/main_menu.tscn"
 
 func _ready():
+	#reset_leaderboards()
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	SilentWolf.Auth.auto_login_player()
 	sounds.play_sfx("smell_this_bread",1,-10)
@@ -46,7 +47,7 @@ func _on_easter_egg_button_pressed():
 	timer.start(sounds.sfx[easter_egg_audio].get_length())
 
 #func reset_leaderboards():
-#	SilentWolf.Scores.wipe_leaderboard("level_1_1")
-#	SilentWolf.Scores.wipe_leaderboard("main")
+	#SilentWolf.Scores.wipe_leaderboard("level_1_1")
+	#SilentWolf.Scores.wipe_leaderboard("main")
 
 

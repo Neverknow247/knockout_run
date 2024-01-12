@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://kib21yto7yik"]
+[gd_scene load_steps=15 format=3 uid="uid://kib21yto7yik"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_es81c"]
 [ext_resource type="Texture2D" uid="uid://cp17f2lkn5tee" path="res://assets/art/characters/runner.png" id="2_bkjmu"]
@@ -209,10 +209,13 @@ _data = {
 "dash_charge": SubResource("Animation_pbwjn")
 }
 
+[sub_resource type="Gradient" id="Gradient_pn5y4"]
+offsets = PackedFloat32Array(0, 0.544974, 1)
+colors = PackedColorArray(0.175, 0.3, 3, 1, 0.175, 0.3, 4, 1, 1, 1, 1, 0)
+
 [node name="player" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 2
-safe_margin = 0.1
 script = ExtResource("1_es81c")
 
 [node name="dash_sprite" type="Sprite2D" parent="."]
@@ -225,6 +228,7 @@ texture = ExtResource("2_ifr66")
 texture = ExtResource("2_bkjmu")
 
 [node name="outline_sprite" type="Sprite2D" parent="."]
+modulate = Color(0.239, 1.4, 0.596, 1)
 texture = ExtResource("3_aebkp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -235,6 +239,7 @@ shape = SubResource("CapsuleShape2D_ohjub")
 disabled = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_lktxx")
 
 [node name="camera_follow" type="RemoteTransform2D" parent="."]
@@ -275,6 +280,20 @@ libraries = {
 "": SubResource("AnimationLibrary_sl8sc")
 }
 autoplay = "RESET"
+
+[node name="particles_1" type="CPUParticles2D" parent="."]
+position = Vector2(0, 6)
+amount = 30
+lifetime = 0.2
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(-1, -0.3)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+color = Color(0.175, 0.3, 4, 1)
+color_ramp = SubResource("Gradient_pn5y4")
 
 [connection signal="timeout" from="slide_timer" to="." method="_on_slide_timer_timeout"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d2p71a2bebw30"]
+[gd_scene load_steps=21 format=3 uid="uid://d2p71a2bebw30"]
 
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_q3vf8"]
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_r16yf"]
@@ -30,6 +30,14 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8htp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p6st8"]
+
+[sub_resource type="Environment" id="Environment_tn8g0"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_bloom = 0.03
+glow_blend_mode = 1
+glow_hdr_threshold = 0.9
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -222,7 +230,7 @@ text = "Change Color:"
 layout_mode = 2
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="change_color/CenterContainer"]
-custom_minimum_size = Vector2(106, 106)
+custom_minimum_size = Vector2(110, 110)
 layout_mode = 2
 theme = ExtResource("6_espp7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fkurc")
@@ -231,9 +239,9 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_st8an")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_d8htp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p6st8")
 color = Color(1, 1, 1, 1)
-edit_alpha = false
 
 [node name="runner_outline" type="TextureRect" parent="change_color/CenterContainer"]
+modulate = Color(0.239, 1, 0.596, 1)
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 mouse_filter = 2
@@ -273,6 +281,9 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tn8g0")
 
 [connection signal="pressed" from="VBoxContainer2/login" to="." method="_on_login_pressed"]
 [connection signal="pressed" from="VBoxContainer2/logout" to="." method="_on_logout_pressed"]

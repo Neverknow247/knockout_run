@@ -37,10 +37,12 @@ var resetting = false
 @onready var pause_menu = $ui/pause_menu
 @onready var level_finish_menu = $ui/level_finish_menu
 @onready var finish = $finish
+@onready var lasers = $lasers
 
 var run_start = false
 
 func _ready():
+	get_tree().paused = false
 	set_current_run_textures()
 	set_other_ghost()
 	ghost_run = stats.save_data[level_id]["ghost"]
@@ -55,6 +57,12 @@ func _ready():
 	pause_menu.connect("reset_level",reset_level)
 	ui.enter_transition()
 	pause_menu.set_up_leaderboards(stats.save_data[level_id][time_string], level_name, level_id, level_id_board)
+	for laser in lasers.get_children():
+		laser.connect("player_dead",player_dead)
+
+func player_dead():
+	reset_level()
+	pause_menu._on_restart_button_pressed()
 
 func set_current_run_textures():
 	current_run.color = stats.save_data["runner_color"]
@@ -84,6 +92,7 @@ func _input(event):
 		pause_menu._on_restart_button_pressed()
 
 func reset_level():
+	player.set_physics_process(false)
 	resetting = true
 
 func level_set_up():
@@ -143,9 +152,9 @@ func update_score():
 	return new_best
 
 func _on_finish_level_complete():
+	pausable = false
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("clapping",randf_range(.9,1.2), -5)
-	pausable = false
 	timer.timer_on = false
 	var new_best = update_score()
 	SaveAndLoad.update_save_data()

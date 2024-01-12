@@ -42,6 +42,7 @@ var current_velocity = 0
 @onready var move_tech_timer = $move_tech_timer
 @onready var slide_player = $slide_player
 @onready var dash_player = $dash_player
+@onready var particles_1 = $particles_1
 
 var air_jump = false:
 	get:
@@ -51,7 +52,7 @@ var air_jump = false:
 		if air_jump == true:
 			outline_sprite.self_modulate = Color.WHITE
 		else:
-			outline_sprite.self_modulate = Color("#4682b4")
+			outline_sprite.self_modulate = Color("#7b5fff")
 
 var slide = true
 var slide_tech_time = 0.4
@@ -74,8 +75,15 @@ func move_state(delta):
 	apply_gravity(delta)
 	var input_axis = Input.get_axis("left", "right")
 	if is_moving(input_axis):
+		if is_on_floor() and current_velocity > 100:
+			particles_1.emitting = true
+			particles_1.direction.x = -input_axis
+			particles_1.initial_velocity_max = current_velocity/4
+		else:
+			particles_1.emitting = false
 		apply_acceleration(delta,input_axis)
 	else:
+		particles_1.emitting = false
 		apply_friction(delta)
 	jump_check()
 	dash_check()
@@ -155,6 +163,7 @@ func jump_check():
 		air_jump = true
 		dash_sprite.modulate = Color("ffffff")
 	else:
+		particles_1.emitting = false
 		dash_sprite.modulate = Color("ffffff0f")
 	if is_on_floor() or coyote_jump_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump"):
@@ -206,6 +215,7 @@ func _on_move_tech_timer_timeout():
 var start = false
 func _on_start_level_area_area_exited(area):
 	if !start:
+		area.play()
 		start_level.emit()
 		start = !start
 

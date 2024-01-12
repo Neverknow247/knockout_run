@@ -20,7 +20,7 @@ func _ready():
 		ProjectSettings.add_property_info({
 			name = "github_to_itch/config/itch_project_name",
 			type = TYPE_STRING
-		})
+		}) 
 
 func _on_meta_clicked(meta):
 	OS.shell_open(meta)

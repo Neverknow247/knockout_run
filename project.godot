@@ -159,6 +159,6 @@ reset_level={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
 textures/lossless_compression/force_png=true
 textures/default_filters/use_nearest_mipmap_filter=true
+viewport/hdr_2d=true

@@ -1,5 +1,4 @@
 extends Node2D
-class_name Level
 
 var stats = Stats
 var sounds = Sounds
