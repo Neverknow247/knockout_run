@@ -26,8 +26,8 @@ static func info(text):
 	
 static func debug(text):
 	if Stats.dev_mode:
+		return
 		if get_log_level() > 1:
-			#print("scores")
 			print(str(text))
 	else:
 		pass

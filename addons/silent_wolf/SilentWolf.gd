@@ -147,14 +147,19 @@ func send_get_request(http_node: HTTPRequest, request_url: String):
 	]
 	headers = add_jwt_token_headers(headers)
 #	print("GET headers: " + str(headers))
-	while !http_node.is_inside_tree():
+	var loop = true
+	while is_instance_valid(http_node) and !http_node.is_inside_tree():
 		await get_tree().create_timer(0.01).timeout
-		#await get_tree().create_timer(.5).timeout
 	SWLogger.debug("Method: GET")
 	SWLogger.debug("request_url: " + str(request_url))
 	SWLogger.debug("headers: " + str(headers))
 	#prints("NODE",http_node)
-	http_node.request(request_url, headers)
+	if !is_instance_valid(http_node):
+		printerr("Failure!")
+		return
+	else:
+		http_node.request(request_url, headers)
+
 
 
 func send_post_request(http_node, request_url, payload):

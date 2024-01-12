@@ -37,7 +37,8 @@ var max_scores = stats.LEADERBOARD_MAX_SCORES
 @onready var transition = $transition
 
 signal fade_out
-signal reset_level
+signal resetting
+signal on_pause(paused)
 
 var pausable = true
 var mode
@@ -47,6 +48,7 @@ var paused = false:
 		return paused
 	set(value):
 		paused = value
+		on_pause.emit(paused)
 		get_tree().paused = paused
 		visible = paused
 		
@@ -155,7 +157,7 @@ func _on_resume_button_pressed():
 	change_pause()
 
 func _on_restart_button_pressed():
-	reset_level.emit()
+	emit_signal("resetting")
 	emit_signal("fade_out")
 	await get_tree().create_timer(stats.transition_time).timeout
 	if paused: change_pause()

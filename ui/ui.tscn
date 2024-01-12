@@ -208,4 +208,5 @@ libraries = {
 }
 
 [connection signal="fade_out" from="pause_menu" to="." method="_on_pause_menu_fade_out"]
+[connection signal="on_pause" from="pause_menu" to="." method="_on_pause_menu_on_pause"]
 [connection signal="fade_out" from="level_finish_menu" to="." method="_on_level_finish_menu_fade_out"]

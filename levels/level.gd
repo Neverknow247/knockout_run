@@ -54,15 +54,14 @@ func _ready():
 	SaveAndLoad.update_save_data()
 	sounds.play_music(level_music)
 	player.connect("start_level",start_level)
-	pause_menu.connect("reset_level",reset_level)
+	pause_menu.connect("resetting",disable_go)
 	ui.enter_transition()
 	pause_menu.set_up_leaderboards(stats.save_data[level_id][time_string], level_name, level_id, level_id_board)
 	for laser in lasers.get_children():
 		laser.connect("player_dead",player_dead)
 
 func player_dead():
-	reset_level()
-	pause_menu._on_restart_button_pressed()
+	reset_scene()
 
 func set_current_run_textures():
 	current_run.color = stats.save_data["runner_color"]
@@ -88,12 +87,17 @@ func _input(event):
 			pause_menu.pause()
 		pausable = !pausable
 	if event.is_action_pressed("reset_level"):
-		reset_level()
-		pause_menu._on_restart_button_pressed()
+		reset_scene()
 
-func reset_level():
-	player.set_physics_process(false)
-	resetting = true
+func reset_scene():
+	disable_go()
+	ui.exit_transition()
+	get_tree().paused = true
+	await get_tree().create_timer(stats.transition_time).timeout
+	get_tree().reload_current_scene()
+
+func disable_go():
+	resetting  = true
 
 func level_set_up():
 	level_id_board = level_id

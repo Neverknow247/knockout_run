@@ -1,7 +1,7 @@
 extends Node
 
 var dev_mode = true
-var transition_time = .4
+var transition_time = .2
 
 const LEADERBOARD_MAX_SCORES = 100
 
