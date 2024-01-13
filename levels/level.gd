@@ -131,7 +131,6 @@ func play_other_ghost():
 	var ghost_position = "Vector2"+(other_ghost_run["positions"][ghost_frame])
 	other_ghost.position = str_to_var(ghost_position)
 
-
 func start_level():
 	if !resetting:
 		run_start = true

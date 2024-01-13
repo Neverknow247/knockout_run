@@ -13,10 +13,6 @@ var sounds = Sounds
 @onready var transition = $transition
 @onready var color_picker_button = $change_color/CenterContainer/ColorPickerButton
 
-
-
-
-
 func _ready():
 	SaveAndLoad.update_save_data()
 	set_log_buttons()
@@ -25,6 +21,8 @@ func _ready():
 		logged_in_user.add_theme_color_override("font_color",Color("#66cdaa"))
 		SaveAndLoad.change_save_location()
 		SaveAndLoad.load_data()
+		stats.save_data["tutorial_complete"] = true
+		SaveAndLoad.update_save_data()
 	sounds.play_music("menu")
 	start_button.grab_focus()
 	color_picker_button.color = stats.save_data["runner_color"]

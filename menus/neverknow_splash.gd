@@ -9,7 +9,7 @@ var utils = Utils
 @onready var easter_egg_button = $easter_egg_button
 
 var easter_egg_audio = "angel_1_1"
-var tutorial_board = "res://menus/main_menu.tscn"
+var tutorial_board = "res://levels/tutorial.tscn"
 var login_board = "res://addons/silent_wolf/Auth/Login.tscn"
 var menu_board = "res://menus/main_menu.tscn"
 
@@ -35,7 +35,7 @@ func _on_timer_timeout():
 	await get_tree().create_timer(stats.transition_time).timeout
 	if !stats.save_data["tutorial_complete"]:
 		get_tree().change_scene_to_file(tutorial_board)
-	elif SilentWolf.Auth.logged_in_player != null:
+	elif SilentWolf.Auth.logged_in_player == null:
 		get_tree().change_scene_to_file(login_board)
 	else:
 		get_tree().change_scene_to_file(menu_board)

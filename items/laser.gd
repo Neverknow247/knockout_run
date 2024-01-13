@@ -39,6 +39,7 @@ func _process(delta):
 				pass
 			else:
 				lines[surge].points[i].y = randf_range(-2.5,2.5)
+				#lines[surge].points[i].y = lines[surge].points[i].y+randf_range(-.5,.5)
 		#for line in lines:
 			#for i in line.points.size():
 				#if i == 0 || i == line.points.size()-1:

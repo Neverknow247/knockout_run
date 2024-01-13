@@ -78,7 +78,7 @@ func move_state(delta):
 		if is_on_floor() and current_velocity > 100:
 			particles_1.emitting = true
 			particles_1.direction.x = -input_axis
-			particles_1.initial_velocity_max = current_velocity/4
+			set_particles_on_speed()
 		else:
 			particles_1.emitting = false
 		apply_acceleration(delta,input_axis)
@@ -95,6 +95,11 @@ func move_state(delta):
 		coyote_jump_timer.start()
 	wall_check()
 	reset_velocity_check()
+
+func set_particles_on_speed():
+	particles_1.initial_velocity_max = current_velocity/4 
+	if current_velocity > 200:
+		particles_1.color = Color(0.175,0.3,6,1)
 
 func reset_velocity_check():
 	if !is_move_tech and is_on_floor():

@@ -9,6 +9,7 @@ var bronze_badge_art = preload("res://assets/art/ui/bronze_badge.png")
 var silver_badge_art = preload("res://assets/art/ui/silver_badge.png")
 var gold_badge_art = preload("res://assets/art/ui/gold_badge.png")
 var diamond_badge_art = preload("res://assets/art/ui/diamond_badge.png")
+var developer_badge_art = preload("res://assets/art/ui/developer_badge.png")
 
 var list_index = 0
 var max_scores = stats.LEADERBOARD_MAX_SCORES
@@ -31,6 +32,9 @@ var last = false
 @onready var silver_time_label = $main/main_content/scores_and_xp/medals/silver/silver_time_label
 @onready var gold_time_label = $main/main_content/scores_and_xp/medals/gold/gold_time_label
 @onready var diamond_time_label = $main/main_content/scores_and_xp/medals/diamond/diamond_time_label
+
+@onready var developer_time = $main/main_content/scores_and_xp/medals/developer_time
+@onready var developer_time_label = $main/main_content/scores_and_xp/medals/developer_time/developer_time_label
 
 @onready var score_container = $main/main_content/leaderboard/ScrollContainer/score_container
 @onready var leaderboard_label = $main/main_content/leaderboard/leaderboard_label
@@ -78,6 +82,7 @@ func clear_leaderboard() -> void:
 func update_times(time, record_time, _level_name, level_id, new_best):
 	clear_leaderboard()
 	update_badge_times(level_id)
+	update_dev_time_visibiliy(record_time, level_id)
 	update_badge_icons(time, record_time, level_id)
 	new_time.text = "%02d:%02d:%03d" % [fmod(time, 60*60)/60, fmod(time,60), fmod(time, 1)*1000]
 	best_time_label.text = "%02d:%02d:%03d" % [fmod(record_time, 60*60)/60, fmod(record_time,60), fmod(record_time, 1)*1000]
@@ -92,9 +97,16 @@ func update_badge_times(level_id):
 	silver_time_label.text = "%02d:%02d:%03d" % [fmod(stats["medal_times"][level_id]["silver"], 60*60)/60, fmod(stats["medal_times"][level_id]["silver"],60), fmod(stats["medal_times"][level_id]["silver"], 1)*1000]
 	gold_time_label.text = "%02d:%02d:%03d" % [fmod(stats["medal_times"][level_id]["gold"], 60*60)/60, fmod(stats["medal_times"][level_id]["gold"],60), fmod(stats["medal_times"][level_id]["gold"], 1)*1000]
 	diamond_time_label.text = "%02d:%02d:%03d" % [fmod(stats["medal_times"][level_id]["diamond"], 60*60)/60, fmod(stats["medal_times"][level_id]["diamond"],60), fmod(stats["medal_times"][level_id]["diamond"], 1)*1000]
+	developer_time_label.text = "%02d:%02d:%03d" % [fmod(stats["medal_times"][level_id]["developer"], 60*60)/60, fmod(stats["medal_times"][level_id]["developer"],60), fmod(stats["medal_times"][level_id]["developer"], 1)*1000]
+
+func update_dev_time_visibiliy(record_time, level_id):
+	if record_time <= stats["medal_times"][level_id]["diamond"]:
+		developer_time.visible = true
 
 func update_badge_icons(time, record_time, level_id):
-	if time <= stats["medal_times"][level_id]["diamond"]:
+	if time <= stats["medal_times"][level_id]["developer"]:
+		badge.texture = developer_badge_art
+	elif time <= stats["medal_times"][level_id]["diamond"]:
 		badge.texture = diamond_badge_art
 	elif time <= stats["medal_times"][level_id]["gold"]:
 		badge.texture = gold_badge_art
@@ -103,7 +115,9 @@ func update_badge_icons(time, record_time, level_id):
 	elif time <= stats["medal_times"][level_id]["bronze"]:
 		badge.texture = bronze_badge_art
 	
-	if record_time <= stats["medal_times"][level_id]["diamond"]:
+	if record_time <= stats["medal_times"][level_id]["developer"]:
+		best_time_badge.texture = developer_badge_art
+	elif record_time <= stats["medal_times"][level_id]["diamond"]:
 		best_time_badge.texture = diamond_badge_art
 	elif record_time <= stats["medal_times"][level_id]["gold"]:
 		best_time_badge.texture = gold_badge_art

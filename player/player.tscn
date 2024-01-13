@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://kib21yto7yik"]
+[gd_scene load_steps=14 format=3 uid="uid://kib21yto7yik"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_es81c"]
 [ext_resource type="Texture2D" uid="uid://cp17f2lkn5tee" path="res://assets/art/characters/runner.png" id="2_bkjmu"]
@@ -209,10 +209,6 @@ _data = {
 "dash_charge": SubResource("Animation_pbwjn")
 }
 
-[sub_resource type="Gradient" id="Gradient_pn5y4"]
-offsets = PackedFloat32Array(0, 0.544974, 1)
-colors = PackedColorArray(0.175, 0.3, 3, 1, 0.175, 0.3, 4, 1, 1, 1, 1, 0)
-
 [node name="player" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 2
@@ -282,6 +278,7 @@ libraries = {
 autoplay = "RESET"
 
 [node name="particles_1" type="CPUParticles2D" parent="."]
+modulate = Color(0.176, 0.302, 1.5, 1)
 position = Vector2(0, 6)
 amount = 30
 lifetime = 0.2
@@ -292,8 +289,6 @@ spread = 30.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 25.0
-color = Color(0.175, 0.3, 4, 1)
-color_ramp = SubResource("Gradient_pn5y4")
 
 [connection signal="timeout" from="slide_timer" to="." method="_on_slide_timer_timeout"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

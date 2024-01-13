@@ -7,10 +7,11 @@ const LEADERBOARD_MAX_SCORES = 100
 
 var medal_times = {
 	level_1_1 = {
-		"bronze" : 21.0000,
-		"silver" : 15.5000,
-		"gold" : 13.7500,
-		"diamond" : 12.7500
+		"bronze" : 42.0000,
+		"silver" : 29.5000,
+		"gold" : 20.7500,
+		"diamond" : 15.7500,
+		"developer" : 8.6333,
 	},
 }
 
