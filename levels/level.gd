@@ -165,6 +165,7 @@ func _on_finish_level_complete():
 	SaveAndLoad.update_save_data()
 	ui.level_finished(record_time, level_name, level_id, new_best)
 	await get_tree().create_timer(2).timeout
+	$ui/level_finish_menu/buttons/restart_button.grab_focus()
 	level_finish_menu.load_scores(level_id_board)
 
 

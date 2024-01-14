@@ -1,26 +1,26 @@
 [gd_scene load_steps=15 format=3 uid="uid://bpo064tebydy3"]
 
-[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_oxk74"]
-[ext_resource type="Script" path="res://menus/leaderboards/dog_walker_leaderboard.gd" id="2_p8fvg"]
-[ext_resource type="PackedScene" uid="uid://clllbf6am8qdf" path="res://addons/silent_wolf/common/SWButton.tscn" id="3_cjje1"]
-[ext_resource type="Texture2D" uid="uid://b200elwvwylwx" path="res://assets/art/ui/leaderboards/level_1.png" id="4_5cnxi"]
-[ext_resource type="Texture2D" uid="uid://bgg8ndqa2qxgr" path="res://assets/art/ui/leaderboards/level_2.png" id="5_vbdre"]
-[ext_resource type="Texture2D" uid="uid://c8f1vtjkmmy5f" path="res://assets/art/ui/leaderboards/level_3.png" id="6_bpx2u"]
-[ext_resource type="Texture2D" uid="uid://1frkl1xh7efq" path="res://assets/art/ui/leaderboards/level_4.png" id="7_2mtqn"]
-[ext_resource type="Texture2D" uid="uid://bkev7gr3kbeqs" path="res://assets/art/ui/leaderboards/level_5.png" id="8_dnpfv"]
-[ext_resource type="Texture2D" uid="uid://d105mvfw48cjs" path="res://assets/art/ui/leaderboards/level_6.png" id="9_rr1cd"]
-[ext_resource type="Texture2D" uid="uid://4th0muwuw3oh" path="res://assets/art/ui/leaderboards/level_7.png" id="10_w5trg"]
-[ext_resource type="Texture2D" uid="uid://chx3h34xsoi67" path="res://assets/art/ui/leaderboards/level_8.png" id="11_md6uh"]
-[ext_resource type="Texture2D" uid="uid://wy5q0lahlgx3" path="res://assets/art/ui/leaderboards/level_9.png" id="12_ucvkq"]
-[ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="13_kq7nb"]
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_4o53g"]
+[ext_resource type="PackedScene" uid="uid://clllbf6am8qdf" path="res://addons/silent_wolf/common/SWButton.tscn" id="2_5dokd"]
+[ext_resource type="Script" path="res://menus/leaderboards/leaderboard.gd" id="2_qqsla"]
+[ext_resource type="Texture2D" uid="uid://b200elwvwylwx" path="res://assets/art/ui/leaderboards/level_1.png" id="3_1uow8"]
+[ext_resource type="Texture2D" uid="uid://bgg8ndqa2qxgr" path="res://assets/art/ui/leaderboards/level_2.png" id="4_jxvsc"]
+[ext_resource type="Texture2D" uid="uid://c8f1vtjkmmy5f" path="res://assets/art/ui/leaderboards/level_3.png" id="5_2qv45"]
+[ext_resource type="Texture2D" uid="uid://1frkl1xh7efq" path="res://assets/art/ui/leaderboards/level_4.png" id="6_2ha3k"]
+[ext_resource type="Texture2D" uid="uid://bkev7gr3kbeqs" path="res://assets/art/ui/leaderboards/level_5.png" id="7_a5rdt"]
+[ext_resource type="Texture2D" uid="uid://d105mvfw48cjs" path="res://assets/art/ui/leaderboards/level_6.png" id="8_6jtye"]
+[ext_resource type="Texture2D" uid="uid://4th0muwuw3oh" path="res://assets/art/ui/leaderboards/level_7.png" id="9_2jo7t"]
+[ext_resource type="Texture2D" uid="uid://chx3h34xsoi67" path="res://assets/art/ui/leaderboards/level_8.png" id="10_hnweb"]
+[ext_resource type="Texture2D" uid="uid://wy5q0lahlgx3" path="res://assets/art/ui/leaderboards/level_9.png" id="11_uyix6"]
+[ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="12_rlpw6"]
 
 [sub_resource type="Theme" id="Theme_j1gah"]
 
-[node name="dog_walker_leaderboard" type="Control"]
+[node name="leaderboards" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-theme = ExtResource("1_oxk74")
-script = ExtResource("2_p8fvg")
+theme = ExtResource("1_4o53g")
+script = ExtResource("2_qqsla")
 
 [node name="OldBoard" type="MarginContainer" parent="."]
 visible = false
@@ -31,10 +31,10 @@ layout_mode = 2
 
 [node name="Board" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 368.0
+offset_left = 96.0
 offset_top = 207.0
 offset_right = 1823.0
-offset_bottom = 963.0
+offset_bottom = 1025.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 48
@@ -45,7 +45,7 @@ layout_mode = 2
 [node name="level_label" type="Label" parent="Board/TitleContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
-text = "Forest 1"
+text = "Knockout Run"
 horizontal_alignment = 1
 
 [node name="MessageContainer" type="CenterContainer" parent="Board"]
@@ -71,7 +71,7 @@ layout_mode = 2
 [node name="CloseButtonContainer" type="CenterContainer" parent="Board"]
 layout_mode = 2
 
-[node name="CloseButton" parent="Board/CloseButtonContainer" instance=ExtResource("3_cjje1")]
+[node name="CloseButton" parent="Board/CloseButtonContainer" instance=ExtResource("2_5dokd")]
 visible = false
 custom_minimum_size = Vector2(600, 80)
 layout_mode = 2
@@ -89,34 +89,14 @@ size_flags_horizontal = 4
 layout_mode = 2
 offset_left = 368.0
 offset_top = 48.0
-offset_right = 1823.0
+offset_right = 1552.0
 offset_bottom = 123.0
 theme_override_font_sizes/font_size = 36
-tab_count = 10
 tab_alignment = 1
 clip_tabs = false
-tab_0/title = "Forest"
-tab_0/disabled = true
-tab_1/title = "Caves"
-tab_1/disabled = true
-tab_2/title = "World3"
-tab_2/disabled = true
-tab_3/title = "World4"
-tab_3/disabled = true
-tab_4/title = "World5"
-tab_4/disabled = true
-tab_5/title = "World6"
-tab_5/disabled = true
-tab_6/title = "World7"
-tab_6/disabled = true
-tab_7/title = "World8"
-tab_7/disabled = true
-tab_8/title = "World9"
-tab_8/disabled = true
-tab_9/title = "World10"
-tab_9/disabled = true
 
 [node name="level_tabs" type="TabBar" parent="tabs"]
+visible = false
 layout_mode = 1
 offset_left = 298.0
 offset_top = 208.0
@@ -128,31 +108,31 @@ theme_override_font_sizes/font_size = 48
 tab_count = 9
 clip_tabs = false
 tab_0/title = ""
-tab_0/icon = ExtResource("4_5cnxi")
+tab_0/icon = ExtResource("3_1uow8")
 tab_0/disabled = true
 tab_1/title = ""
-tab_1/icon = ExtResource("5_vbdre")
+tab_1/icon = ExtResource("4_jxvsc")
 tab_1/disabled = true
 tab_2/title = ""
-tab_2/icon = ExtResource("6_bpx2u")
+tab_2/icon = ExtResource("5_2qv45")
 tab_2/disabled = true
 tab_3/title = ""
-tab_3/icon = ExtResource("7_2mtqn")
+tab_3/icon = ExtResource("6_2ha3k")
 tab_3/disabled = true
 tab_4/title = ""
-tab_4/icon = ExtResource("8_dnpfv")
+tab_4/icon = ExtResource("7_a5rdt")
 tab_4/disabled = true
 tab_5/title = ""
-tab_5/icon = ExtResource("9_rr1cd")
+tab_5/icon = ExtResource("8_6jtye")
 tab_5/disabled = true
 tab_6/title = ""
-tab_6/icon = ExtResource("10_w5trg")
+tab_6/icon = ExtResource("9_2jo7t")
 tab_6/disabled = true
 tab_7/title = ""
-tab_7/icon = ExtResource("11_md6uh")
+tab_7/icon = ExtResource("10_hnweb")
 tab_7/disabled = true
 tab_8/title = ""
-tab_8/icon = ExtResource("12_ucvkq")
+tab_8/icon = ExtResource("11_uyix6")
 tab_8/disabled = true
 
 [node name="back_button" type="Button" parent="."]
@@ -163,7 +143,7 @@ offset_right = 292.0
 offset_bottom = 123.0
 text = "← Back"
 
-[node name="transition" parent="." instance=ExtResource("13_kq7nb")]
+[node name="transition" parent="." instance=ExtResource("12_rlpw6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0

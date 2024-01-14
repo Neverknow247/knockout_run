@@ -3,7 +3,7 @@ extends Node
 var dev_mode = true
 var transition_time = .2
 
-const LEADERBOARD_MAX_SCORES = 100
+const LEADERBOARD_MAX_SCORES = 1000
 
 var medal_times = {
 	level_1_1 = {

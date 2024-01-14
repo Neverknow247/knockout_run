@@ -20,7 +20,7 @@ var sfx = {
 	"bark_twice" : load(sfx_path+"bark_twice.wav"),
 	"go" : load(sfx_path+"go.wav"),
 	"clapping" : load(sfx_path+"clapping.wav"),
-#	"" : load(sfx_path+".wav"),
+	"baaa" : load(sfx_path+"baaa.wav"),
 #	"" : load(sfx_path+".wav"),
 	}
 

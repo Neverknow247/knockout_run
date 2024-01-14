@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://2wy4d8d5av0l"]
+[gd_scene load_steps=3 format=3 uid="uid://2wy4d8d5av0l"]
 
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_b4r3n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bptax"]
+bg_color = Color(0, 0, 0, 0.9)
 
 [node name="ScoreItem" type="Panel"]
 custom_minimum_size = Vector2(1050, 50)
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("1_b4r3n")
+theme_override_styles/panel = SubResource("StyleBoxFlat_bptax")
 
 [node name="PlayerName" type="Label" parent="."]
 custom_minimum_size = Vector2(100, 50)

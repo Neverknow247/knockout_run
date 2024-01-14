@@ -19,57 +19,80 @@ var ld_name = "level_1_1"
 
 var max_scores = stats.LEADERBOARD_MAX_SCORES
 var world_tab = 0
-var level_tab = 0
+#var level_tab = 0
 
 var tabs_disabled = false
-var world_tabs_num = 2
-var level_tabs_num = 9
+var world_tabs_num = 0
+#var level_tabs_num = 9
+
+#var ld_names = [
+	#["level_1_1",
+	#"level_1_2",
+	#"level_1_3",
+	#"level_1_4",
+	#"level_1_5",
+	#"level_1_6",
+	#"level_1_7",
+	#"level_1_8",
+	#"level_1_9"],
+	#["level_2_1",
+	#"level_2_2",
+	#"level_2_3",
+	#"level_2_4",
+	#"level_2_5",
+	#"level_2_6",
+	#"level_2_7",
+	#"level_2_8",
+	#"level_2_9"],
+#]
+#var ld_labels = [
+	#["Forest 1",
+	#"Forest 2",
+	#"Forest 3",
+	#"Forest 4",
+	#"Forest 5",
+	#"Forest 6",
+	#"Forest 7",
+	#"Forest 8",
+	#"Forest 9"],
+	#["Caves 1",
+	#"Caves 2",
+	#"Caves 3",
+	#"Caves 4",
+	#"Caves 5",
+	#"Caves 6",
+	#"Caves 7",
+	#"Caves 8",
+	#"Caves 9"],
+#]
+
+var level_names = [
+	"Knockout Run",
+	"Sheep"
+]
 
 var ld_names = [
-	["level_1_1",
-	"level_1_2",
-	"level_1_3",
-	"level_1_4",
-	"level_1_5",
-	"level_1_6",
-	"level_1_7",
-	"level_1_8",
-	"level_1_9"],
-	["level_2_1",
-	"level_2_2",
-	"level_2_3",
-	"level_2_4",
-	"level_2_5",
-	"level_2_6",
-	"level_2_7",
-	"level_2_8",
-	"level_2_9"],
-]
-var ld_labels = [
-	["Forest 1",
-	"Forest 2",
-	"Forest 3",
-	"Forest 4",
-	"Forest 5",
-	"Forest 6",
-	"Forest 7",
-	"Forest 8",
-	"Forest 9"],
-	["Caves 1",
-	"Caves 2",
-	"Caves 3",
-	"Caves 4",
-	"Caves 5",
-	"Caves 6",
-	"Caves 7",
-	"Caves 8",
-	"Caves 9"],
+	"level_1_1",
+	"level_sheep"
 ]
 
+var unlocked_ld_names = []
+var unlocked_level_names = []
+
 func _ready():
+	set_tabs()
 	clear_leaderboard()
 	set_tabs_disable()
 	load_scores()
+
+func set_tabs():
+	for i in ld_names.size():
+		var level = ld_names[i]
+		if stats.save_data[level]['unlocked']:
+			world_tabs_num += 1
+			unlocked_ld_names.append(ld_names[i])
+			unlocked_level_names.append(level_names[i])
+			world_tabs.add_tab(level_names[i])
 
 func load_scores():
 #	print("SilentWolf.Scores.leaderboards: " + str(SilentWolf.Scores.leaderboards))
@@ -207,28 +230,30 @@ func _on_world_tabs_tab_clicked(tab):
 	await get_tree().create_timer(stats.transition_time).timeout
 	set_tabs_disable()
 	world_tab = tab
-	ld_name = ld_names[world_tab][level_tab]
-	level_label.text = ld_labels[world_tab][level_tab]
+	ld_name = unlocked_ld_names[world_tab]
+	level_label.text = unlocked_level_names[world_tab]
+	#ld_name = ld_names[world_tab][level_tab]
+	#level_label.text = ld_labels[world_tab][level_tab]
 	change_tab()
 
-func _on_level_tabs_tab_clicked(tab):
-	transition.fade_out()
-	await get_tree().create_timer(stats.transition_time).timeout
-	set_tabs_disable()
-	level_tab = tab
-	ld_name = ld_names[world_tab][level_tab]
-	level_label.text = ld_labels[world_tab][level_tab]
-	change_tab()
+#func _on_level_tabs_tab_clicked(tab):
+	#transition.fade_out()
+	#await get_tree().create_timer(stats.transition_time).timeout
+	#set_tabs_disable()
+	#level_tab = tab
+	#ld_name = ld_names[world_tab][level_tab]
+	#level_label.text = ld_labels[world_tab][level_tab]
+	#change_tab()
 
 func set_tabs_disable():
 	tabs_disabled = !tabs_disabled
 	for i in world_tabs_num:
 		world_tabs.set_tab_disabled(i,tabs_disabled)
-	for i in level_tabs_num:
-		level_tabs.set_tab_disabled(i,tabs_disabled)
+	#for i in level_tabs_num:
+		#level_tabs.set_tab_disabled(i,tabs_disabled)
 
 
 func _on_back_button_pressed():
 	transition.fade_out()
 	await get_tree().create_timer(stats.transition_time).timeout
-	get_tree().change_scene_to_file("res://menus/mode_select.tscn")
+	get_tree().change_scene_to_file("res://menus/main_menu.tscn")

@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cey76indp6aut"]
+[gd_scene load_steps=4 format=3 uid="uid://cey76indp6aut"]
 
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_legi3"]
 [ext_resource type="Script" path="res://addons/silent_wolf/Scores/OtherScoreItem.gd" id="2_1f0vy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qjf2"]
+bg_color = Color(0, 0, 0, 0.9)
 
 [node name="OtherScoreItem" type="Panel"]
 custom_minimum_size = Vector2(1050, 50)
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("1_legi3")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6qjf2")
 script = ExtResource("2_1f0vy")
 
 [node name="Button" type="Button" parent="."]

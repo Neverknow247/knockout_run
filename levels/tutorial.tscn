@@ -1238,7 +1238,7 @@ position = Vector2(620, -224)
 position = Vector2(2420, -64)
 stats_level_name = "level_sheep"
 secret_level = "res://levels/levels_1/level_sheep.tscn"
-sound_effect = "bark_twice"
+sound_effect = "baaa"
 
 [node name="CollisionShape2D" parent="egg_teleport" index="0"]
 position = Vector2(0, 1)

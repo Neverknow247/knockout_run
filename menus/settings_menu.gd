@@ -10,7 +10,10 @@ var credits_scene = "res://menus/credits.tscn"
 @onready var volume_menu = $volume_menu
 @onready var keybinding_menu = $keybinding_menu
 
+signal hide_menu
+
 func _on_back_button_pressed():
+	hide_menu.emit()
 	hide()
 
 func _on_sounds_button_pressed():

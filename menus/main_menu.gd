@@ -4,6 +4,7 @@ var stats = Stats
 var sounds = Sounds
 
 var tutorial_scene = "res://levels/tutorial.tscn"
+var leaderboards_scene = "res://menus/leaderboards/leaderboard.tscn"
 
 @onready var start_button = $CenterContainer/HBoxContainer/VBoxContainer/start_button
 @onready var logged_in_user = $logged_in_user
@@ -13,6 +14,7 @@ var tutorial_scene = "res://levels/tutorial.tscn"
 @onready var transition = $transition
 @onready var color_picker_button = $change_color/CenterContainer/ColorPickerButton
 @onready var settings_menu = $settings_menu
+@onready var background = $background
 
 func _ready():
 	SaveAndLoad.update_save_data()
@@ -77,7 +79,7 @@ func _on_volume_menu_hide_menu():
 	start_button.grab_focus()
 
 func _on_leaderboard_button_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file(leaderboards_scene)
 
 func _on_color_picker_button_color_changed(color):
 	stats.save_data["runner_color"] = Color(color)
@@ -87,3 +89,7 @@ func _on_tutorial_button_pressed():
 
 func _on_settings_button_pressed():
 	settings_menu.show()
+	$settings_menu/CenterContainer/VBoxContainer/sounds_button.grab_focus()
+
+func _on_settings_menu_hide_menu():
+	$CenterContainer/HBoxContainer/VBoxContainer/settings_button.grab_focus()
