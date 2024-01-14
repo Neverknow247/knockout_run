@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://menus/main_menu.gd" id="1_q3vf8"]
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_r16yf"]
 [ext_resource type="Script" path="res://menus/leaderboard.gd" id="3_g6b46"]
-[ext_resource type="PackedScene" uid="uid://bckk7vobled6e" path="res://menus/volume_button.tscn" id="3_wcdoj"]
 [ext_resource type="Texture2D" uid="uid://cxqs7k64c1inl" path="res://assets/art/characters/runner_outline_icon.png" id="5_b2rk4"]
-[ext_resource type="PackedScene" uid="uid://dehumamikbwdi" path="res://menus/volume_menu.tscn" id="5_sd7ej"]
 [ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="5_vx758"]
 [ext_resource type="Theme" uid="uid://ca3ryc4sjsyug" path="res://menus/menu_theme_small.tres" id="6_espp7"]
+[ext_resource type="PackedScene" uid="uid://18dk5gmnm6j4" path="res://menus/settings_menu.tscn" id="6_w4s8d"]
+[ext_resource type="PackedScene" uid="uid://caauqm4nwd564" path="res://menus/keybinding_menu.tscn" id="12_t30gy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_os5mk"]
 
@@ -165,6 +165,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_altli")
 text = "Start"
 
 [node name="tutorial_button" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -198,6 +199,7 @@ text = "Settings
 "
 
 [node name="credits_button" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -276,14 +278,11 @@ theme_override_colors/font_color = Color(0.984314, 0.423529, 0.423529, 1)
 theme_override_font_sizes/font_size = 48
 text = "Logged Out"
 
-[node name="volume_button" parent="." instance=ExtResource("3_wcdoj")]
+[node name="settings_menu" parent="." instance=ExtResource("6_w4s8d")]
+visible = false
 layout_mode = 1
-offset_left = 1752.0
-offset_top = 32.0
-offset_right = 1888.0
-offset_bottom = 168.0
 
-[node name="volume_menu" parent="." instance=ExtResource("5_sd7ej")]
+[node name="keybinding_menu" parent="." instance=ExtResource("12_t30gy")]
 visible = false
 layout_mode = 1
 
@@ -309,5 +308,3 @@ environment = SubResource("Environment_tn8g0")
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/credits_button" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
 [connection signal="color_changed" from="change_color/CenterContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
-[connection signal="pressed" from="volume_button" to="." method="_on_volume_button_pressed"]
-[connection signal="hide_menu" from="volume_menu" to="." method="_on_volume_menu_hide_menu"]

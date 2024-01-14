@@ -11,12 +11,19 @@ var medal_times = {
 		"silver" : 29.5000,
 		"gold" : 20.7500,
 		"diamond" : 15.7500,
-		"developer" : 8.6333,
+		"developer" : 8.56669,
+	},
+	level_sheep = {
+		"bronze" : 42.0000,
+		"silver" : 29.5000,
+		"gold" : 20.7500,
+		"diamond" : 15.7500,
+		"developer" : 8.56669,
 	},
 }
 
 var new_save_data = {
-	"version" : 1,
+	"version" : 1.1,
 	"power_on_count" : 0,
 	"tutorial_complete" : false,
 	"runner_color" : Color(1, 1, 1, 1),
@@ -32,7 +39,7 @@ var new_save_data = {
 			"color":Color.WHITE,
 		},
 	},
-	"level_1_2" : {
+	"level_sheep" : {
 		"unlocked" : false,
 		"time" : 3599.9999,
 		"ghost":{

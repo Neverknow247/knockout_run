@@ -73,7 +73,7 @@ func _physics_process(delta):
 
 func move_state(delta):
 	apply_gravity(delta)
-	var input_axis = Input.get_axis("left", "right")
+	var input_axis = get_input_axis()
 	if is_moving(input_axis):
 		if is_on_floor() and current_velocity > 100:
 			particles_1.emitting = true
@@ -96,10 +96,27 @@ func move_state(delta):
 	wall_check()
 	reset_velocity_check()
 
+func get_input_axis():
+	var input_axis = 0
+	if Input.get_axis("controller_left", "controller_right") != 0:
+		input_axis = Input.get_axis("controller_left", "controller_right")
+	if Input.get_axis("left", "right") != 0:
+		input_axis = Input.get_axis("left", "right")
+	return input_axis
+
 func set_particles_on_speed():
-	particles_1.initial_velocity_max = current_velocity/4 
-	if current_velocity > 200:
-		particles_1.color = Color(0.175,0.3,6,1)
+	particles_1.initial_velocity_max = current_velocity/4
+	#particles_1.modulate.b = inverse_lerp(0, 1000, current_velocity)
+	if current_velocity > 500:
+		particles_1.modulate = Color(0.175,0.3,5,1)
+	elif current_velocity > 400:
+		particles_1.modulate = Color(0.175,0.3,4,1)
+	elif current_velocity > 300:
+		particles_1.modulate = Color(0.175,0.3,3,1)
+	elif current_velocity > 200:
+		particles_1.modulate = Color(0.175,0.3,2,1)
+	else:
+		particles_1.modulate = Color(0.175,0.3,1,1)
 
 func reset_velocity_check():
 	if !is_move_tech and is_on_floor():
@@ -122,17 +139,17 @@ func wall_check():
 		#slide_player.play("RESET")
 
 func wall_detach(delta):
-	if Input.is_action_just_pressed("right"):
+	if Input.is_action_just_pressed("right") || Input.is_action_just_pressed("controller_right"):
 		velocity.x = acceleration * delta
 		state = move_state
-	if Input.is_action_just_pressed("left"):
+	if Input.is_action_just_pressed("left") || Input.is_action_just_pressed("controller_left"):
 		velocity.x = -acceleration * delta
 		state = move_state
 	if not is_on_wall() and not is_on_ceiling() or is_on_floor():
 		state = move_state
 #
 func wall_jump_check(wall_axis):
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump")||Input.is_action_just_pressed("controller_jump"):
 		#velocity.x = wall_axis*max(default_max_velocity,min(default_max_velocity*2,max_velocity/2))
 		velocity.x = wall_axis*default_max_velocity
 		state = move_state
@@ -141,7 +158,7 @@ func wall_jump_check(wall_axis):
 #
 func apply_wall_slide_gravity(delta):
 	var slide_speed = wall_slide_speed
-	if Input.is_action_pressed("slide_wallslide"):
+	if Input.is_action_pressed("slide") || Input.is_action_pressed("controller_slide"):
 		slide_speed = max_wall_slide_speed
 	else:
 		slide_speed = wall_slide_speed
@@ -171,15 +188,15 @@ func jump_check():
 		particles_1.emitting = false
 		dash_sprite.modulate = Color("ffffff0f")
 	if is_on_floor() or coyote_jump_timer.time_left > 0.0:
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("controller_jump"):
 			max_velocity = max(default_max_velocity,current_velocity)
 			if coyote_jump_timer.time_left > 0.0:
 				max_velocity += ledge_bonus
 			jump(jump_force)
 	elif not is_on_floor():
-		if Input.is_action_just_released("jump") and velocity.y < -jump_force / 2:
+		if (Input.is_action_just_released("jump")|| Input.is_action_just_released("controller_jump")) and velocity.y < -jump_force / 2:
 			velocity.y = -jump_force / 2
-		if Input.is_action_just_pressed("jump") and air_jump:
+		if (Input.is_action_just_pressed("jump")||Input.is_action_just_pressed("controller_jump")) and air_jump:
 			jump(jump_force * 0.75,false,true)
 			air_jump = false
 
@@ -187,7 +204,7 @@ func jump(force, create_effect = true, air_jump = false):
 	velocity.y = -force
 
 func dash_check():
-	if Input.is_action_just_pressed("dash") and is_on_floor() and dash:
+	if (Input.is_action_just_pressed("dash") || Input.is_action_just_pressed("controller_dash")) and is_on_floor() and dash:
 		dash = false
 		is_move_tech = true
 		max_velocity += dash_bonus
@@ -200,7 +217,7 @@ func _on_dash_timer_timeout():
 	dash = true
 
 func slide_check():
-	if Input.is_action_just_pressed("slide_wallslide") and is_on_floor() and slide:
+	if (Input.is_action_just_pressed("slide") || Input.is_action_just_pressed("controller_slide")) and is_on_floor() and slide:
 		slide_player.play("squish")
 		dash = false
 		slide = false

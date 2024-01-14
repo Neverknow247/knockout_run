@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://n615rx02auyl"]
+[gd_scene load_steps=11 format=3 uid="uid://n615rx02auyl"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_2o8nt"]
-[ext_resource type="Texture2D" uid="uid://e88tapajqrdd" path="res://assets/art/ui/vignette.png" id="2_q64kn"]
 [ext_resource type="Script" path="res://ui/timer.gd" id="4_cekrk"]
 [ext_resource type="PackedScene" uid="uid://dwrgxipppsvqh" path="res://menus/pause_menu.tscn" id="6_nmmub"]
 [ext_resource type="PackedScene" uid="uid://budbi2xh55xtg" path="res://menus/level_finish_menu.tscn" id="7_af7if"]
@@ -107,7 +106,6 @@ script = ExtResource("1_2o8nt")
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_q64kn")
 
 [node name="timer" type="Control" parent="."]
 layout_mode = 3

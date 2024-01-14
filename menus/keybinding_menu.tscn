@@ -1,0 +1,292 @@
+[gd_scene load_steps=3 format=3 uid="uid://caauqm4nwd564"]
+
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_yb45g"]
+[ext_resource type="Script" path="res://menus/keybinding_menu.gd" id="2_52ono"]
+
+[node name="keybinding_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yb45g")
+script = ExtResource("2_52ono")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -536.5
+offset_top = 32.0
+offset_right = 536.5
+offset_bottom = 105.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+text = "Press any Key or Mouse Button"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(912, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "-Keyboard-"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="left" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer3" groups=["keyboard"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/HBoxContainer3/controller_left")
+focus_neighbor_top = NodePath("../../../../../back_button")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/HBoxContainer3/controller_left")
+focus_neighbor_bottom = NodePath("../../HBoxContainer4/right")
+focus_next = NodePath("../../HBoxContainer4/right")
+focus_previous = NodePath("../../../../../back_button")
+text = "Left"
+
+[node name="left_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="right" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer4" groups=["keyboard"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/HBoxContainer4/controller_right")
+focus_neighbor_top = NodePath("../../HBoxContainer3/left")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/HBoxContainer4/controller_right")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/jump")
+focus_next = NodePath("../../HBoxContainer/jump")
+focus_previous = NodePath("../../HBoxContainer3/left")
+text = "Right"
+
+[node name="right_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="jump" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer" groups=["keyboard"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/HBoxContainer/controller_jump")
+focus_neighbor_top = NodePath("../../HBoxContainer4/right")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/HBoxContainer/controller_jump")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/slide")
+focus_next = NodePath("../../HBoxContainer2/slide")
+focus_previous = NodePath("../../HBoxContainer4/right")
+text = "Jump"
+
+[node name="jump_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="slide" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer2" groups=["keyboard"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/HBoxContainer2/controller_slide")
+focus_neighbor_top = NodePath("../../HBoxContainer/jump")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/HBoxContainer2/controller_slide")
+focus_neighbor_bottom = NodePath("../../HBoxContainer5/dash")
+focus_next = NodePath("../../HBoxContainer5/dash")
+focus_previous = NodePath("../../HBoxContainer/jump")
+text = "Slide"
+
+[node name="slide_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="dash" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer5" groups=["keyboard"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/HBoxContainer5/controller_dash")
+focus_neighbor_top = NodePath("../../HBoxContainer2/slide")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/HBoxContainer5/controller_dash")
+focus_neighbor_bottom = NodePath("../../../../../back_button")
+focus_next = NodePath("../../../VBoxContainer2/HBoxContainer3/controller_left")
+focus_previous = NodePath("../../HBoxContainer2/slide")
+text = "Dash"
+
+[node name="dash_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(912, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "-Controller-"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="controller_left" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer3" groups=["controller"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/HBoxContainer3/left")
+focus_neighbor_top = NodePath("../../../../../back_button")
+focus_neighbor_right = NodePath("../../../VBoxContainer/HBoxContainer3/left")
+focus_neighbor_bottom = NodePath("../../HBoxContainer4/controller_right")
+focus_next = NodePath("../../HBoxContainer4/controller_right")
+focus_previous = NodePath("../../../VBoxContainer/HBoxContainer5/dash")
+text = "Left"
+
+[node name="left_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="controller_right" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer4" groups=["controller"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/HBoxContainer4/right")
+focus_neighbor_top = NodePath("../../HBoxContainer3/controller_left")
+focus_neighbor_right = NodePath("../../../VBoxContainer/HBoxContainer4/right")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/controller_jump")
+focus_next = NodePath("../../HBoxContainer/controller_jump")
+focus_previous = NodePath("../../HBoxContainer3/controller_left")
+text = "Right"
+
+[node name="right_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="controller_jump" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer" groups=["controller"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/HBoxContainer/jump")
+focus_neighbor_top = NodePath("../../HBoxContainer4/controller_right")
+focus_neighbor_right = NodePath("../../../VBoxContainer/HBoxContainer/jump")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/controller_slide")
+focus_next = NodePath("../../HBoxContainer2/controller_slide")
+focus_previous = NodePath("../../HBoxContainer4/controller_right")
+text = "Jump"
+
+[node name="jump_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="controller_slide" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" groups=["controller"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/HBoxContainer2/slide")
+focus_neighbor_top = NodePath("../../HBoxContainer/controller_jump")
+focus_neighbor_right = NodePath("../../../VBoxContainer/HBoxContainer2/slide")
+focus_neighbor_bottom = NodePath("../../HBoxContainer5/controller_dash")
+focus_next = NodePath("../../HBoxContainer5/controller_dash")
+focus_previous = NodePath("../../HBoxContainer/controller_jump")
+text = "Slide"
+
+[node name="slide_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="controller_dash" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer5" groups=["controller"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/HBoxContainer5/dash")
+focus_neighbor_top = NodePath("../../HBoxContainer2/controller_slide")
+focus_neighbor_right = NodePath("../../../VBoxContainer/HBoxContainer5/dash")
+focus_neighbor_bottom = NodePath("../../../../../back_button")
+focus_next = NodePath("../../../../../back_button")
+focus_previous = NodePath("../../HBoxContainer2/controller_slide")
+text = "Dash"
+
+[node name="dash_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 188.0
+offset_bottom = 113.0
+focus_neighbor_left = NodePath("../CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer3/left")
+focus_neighbor_top = NodePath("../CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer5/dash")
+focus_neighbor_right = NodePath("../CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer3/controller_left")
+focus_neighbor_bottom = NodePath("../CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer3/left")
+focus_next = NodePath("../CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer3/left")
+focus_previous = NodePath("../CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer5/controller_dash")
+text = "← Back"
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

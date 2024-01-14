@@ -5,7 +5,6 @@ var sounds = Sounds
 
 var tutorial_scene = "res://levels/tutorial.tscn"
 
-@onready var volume_menu = $volume_menu
 @onready var start_button = $CenterContainer/HBoxContainer/VBoxContainer/start_button
 @onready var logged_in_user = $logged_in_user
 @onready var login = $VBoxContainer2/login
@@ -13,6 +12,7 @@ var tutorial_scene = "res://levels/tutorial.tscn"
 @onready var credits_button = $CenterContainer/HBoxContainer/VBoxContainer/credits_button
 @onready var transition = $transition
 @onready var color_picker_button = $change_color/CenterContainer/ColorPickerButton
+@onready var settings_menu = $settings_menu
 
 func _ready():
 	SaveAndLoad.update_save_data()
@@ -40,13 +40,6 @@ func _on_start_button_pressed():
 	transition.fade_out()
 	await get_tree().create_timer(stats.transition_time).timeout
 	get_tree().change_scene_to_file("res://levels/levels_1/level_1_1.tscn")
-
-func _on_volume_button_pressed():
-	transition.fade_out()
-	await get_tree().create_timer(stats.transition_time).timeout
-	volume_menu.visible = true
-	volume_menu.master_slider.grab_focus()
-	transition.fade_in()
 
 func _on_quit_button_pressed():
 	transition.fade_out()
@@ -93,4 +86,4 @@ func _on_tutorial_button_pressed():
 	get_tree().change_scene_to_file(tutorial_scene)
 
 func _on_settings_button_pressed():
-	pass # Replace with function body.
+	settings_menu.show()

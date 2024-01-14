@@ -59,6 +59,7 @@ func _ready():
 	pause_menu.set_up_leaderboards(stats.save_data[level_id][time_string], level_name, level_id, level_id_board)
 	for laser in lasers.get_children():
 		laser.connect("player_dead",player_dead)
+	set_up_comets()
 
 func player_dead():
 	reset_scene()
@@ -108,6 +109,7 @@ func level_set_up():
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta):
+	move_comets(delta)
 	if run_start == true:
 		catch_ghost()
 		if ghost_frame >= ghost_run["positions"].size():
@@ -164,3 +166,38 @@ func _on_finish_level_complete():
 	ui.level_finished(record_time, level_name, level_id, new_best)
 	await get_tree().create_timer(2).timeout
 	level_finish_menu.load_scores(level_id_board)
+
+
+@onready var comets = $comets
+
+func set_up_comets():
+	for child in comets.get_children():
+		for i in child.points.size():
+			child.points[i] = player.global_position
+
+func move_comets(delta):
+	var speed = 25
+	var default_invis_distance = 40
+	var default_fade_distance = 80
+	var comet_offset = abs(player.velocity.x/50)
+	#for child in comets.get_children():
+	for x in comets.get_child_count():
+		var child = comets.get_child(x)
+		var invis_distance = default_invis_distance*(x+1)
+		var fade_distance = default_fade_distance*(x+1)
+		child.points[0] = player.global_position + (player.velocity.normalized() * comet_offset)
+		
+		for i in child.points.size():
+			if i == 0:
+				continue
+			
+			child.points[i] = lerp(child.points[i], child.points[i - 1], delta * speed)
+		
+		var end_point = child.points[child.points.size() - 1]
+		var distance = end_point.distance_to(player.global_position + (player.velocity.normalized() * comet_offset))
+		if distance < invis_distance:
+			child.modulate.a = 0
+		elif  distance < fade_distance:
+			child.modulate.a = inverse_lerp(0, fade_distance, distance-invis_distance)
+		else:
+			child.modulate.a = 1

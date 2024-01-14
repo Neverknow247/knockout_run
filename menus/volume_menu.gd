@@ -30,8 +30,10 @@ func _ready():
 	master_slider.grab_focus()
 
 func _on_back_button_pressed():
+	SaveAndLoad.update_settings()
+	emit_signal("hide_menu")
+	await get_tree().create_timer(stats.transition_time).timeout
 	self.visible = false
-#	get_tree().change_scene_to_file("res://menus/main_menu.tscn")
 
 func _on_master_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))

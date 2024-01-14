@@ -12,10 +12,16 @@ var sounds = Sounds
 @onready var lasers = $lasers
 @onready var animation_player = $ui/AnimationPlayer
 @onready var checkpoint = $checkpoint
+@onready var pause_menu = $ui/pause_menu
+@onready var keyboard_controls = $keyboard_controls
+@onready var controller_controls = $controller_controls
+
 
 var login_board = "res://addons/silent_wolf/Auth/Login.tscn"
 var menu_board = "res://menus/main_menu.tscn"
 var run_start = false
+var pausable= true
+var resetting = false
 
 func _ready():
 	RenderingServer.set_default_clear_color(Color.BLACK)
@@ -25,6 +31,20 @@ func _ready():
 	player.connect("start_level",start_level)
 	for laser in lasers.get_children():
 		laser.connect("player_dead",player_dead)
+
+func _input(event):
+	if event is InputEventJoypadButton || event is InputEventJoypadMotion:
+		keyboard_controls.hide()
+		controller_controls.show()
+	elif event is InputEventKey || event is InputEventMouseButton:
+		keyboard_controls.show()
+		controller_controls.hide()
+	if event.is_action_pressed("pause"):
+		if pausable:
+			pause_menu.pause()
+		pausable = !pausable
+	if event.is_action_pressed("reset_level"):
+		reset_scene()
 
 func player_dead():
 	player.velocity = Vector2.ZERO

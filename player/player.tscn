@@ -210,7 +210,7 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D"]
-z_index = 1
+z_index = 50
 collision_layer = 2
 script = ExtResource("1_es81c")
 
@@ -224,7 +224,7 @@ texture = ExtResource("2_ifr66")
 texture = ExtResource("2_bkjmu")
 
 [node name="outline_sprite" type="Sprite2D" parent="."]
-modulate = Color(0.239, 1.4, 0.596, 1)
+modulate = Color(0.239, 1.6, 0.596, 1)
 texture = ExtResource("3_aebkp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -280,8 +280,8 @@ autoplay = "RESET"
 [node name="particles_1" type="CPUParticles2D" parent="."]
 modulate = Color(0.176, 0.302, 1.5, 1)
 position = Vector2(0, 6)
-amount = 30
-lifetime = 0.2
+amount = 100
+lifetime = 0.3
 emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector2(-1, -0.3)

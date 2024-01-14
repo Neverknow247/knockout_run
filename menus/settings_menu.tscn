@@ -1,0 +1,287 @@
+[gd_scene load_steps=18 format=3 uid="uid://18dk5gmnm6j4"]
+
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_1dikf"]
+[ext_resource type="Script" path="res://menus/settings_menu.gd" id="1_3l6au"]
+[ext_resource type="Texture2D" uid="uid://dauwfy6rlpu4j" path="res://assets/art/menus/menu_solid_background.png" id="3_cktkd"]
+[ext_resource type="PackedScene" uid="uid://caauqm4nwd564" path="res://menus/keybinding_menu.tscn" id="4_hga0d"]
+[ext_resource type="Script" path="res://menus/volume_menu.gd" id="4_pwrf3"]
+[ext_resource type="Texture2D" uid="uid://becouanoainv8" path="res://assets/art/menus/sound_button.png" id="5_dg7hq"]
+[ext_resource type="Texture2D" uid="uid://dkdhp2ewb74hr" path="res://assets/art/menus/sound_button_hover.png" id="6_isf2v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76a3c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76v5w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1g4uq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37g7q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_142l4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_he1wk"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("5_dg7hq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_80ibt"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("6_isf2v")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pk4aj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvjm5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v7xfd"]
+texture = ExtResource("6_isf2v")
+
+[node name="settings_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1dikf")
+script = ExtResource("1_3l6au")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="sounds_button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 81)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_76a3c")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_76v5w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1g4uq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_37g7q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_142l4")
+text = "Sounds"
+
+[node name="keybindings_button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 81)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_76a3c")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_76v5w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1g4uq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_37g7q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_142l4")
+text = "Controls"
+
+[node name="tutorial_button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 81)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_76a3c")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_76v5w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1g4uq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_37g7q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_142l4")
+text = "Tutorial
+"
+
+[node name="credits_button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 81)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_76a3c")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_76v5w")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1g4uq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_37g7q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_142l4")
+text = "Credits
+"
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 188.0
+offset_bottom = 113.0
+text = "← Back"
+
+[node name="volume_menu" type="TextureRect" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1dikf")
+texture = ExtResource("3_cktkd")
+script = ExtResource("4_pwrf3")
+
+[node name="Label" type="Label" parent="volume_menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_top = 10.0
+offset_right = 82.0
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 128
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="volume_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="volume_menu/CenterContainer"]
+layout_mode = 2
+
+[node name="master" type="HBoxContainer" parent="volume_menu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="volume_menu/CenterContainer/VBoxContainer/master"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="master_slider" type="HSlider" parent="volume_menu/CenterContainer/VBoxContainer/master"]
+custom_minimum_size = Vector2(300, 86)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../../back_volume_button")
+max_value = 1.0
+step = 0.05
+
+[node name="music" type="HBoxContainer" parent="volume_menu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="volume_menu/CenterContainer/VBoxContainer/music"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="music_slider" type="HSlider" parent="volume_menu/CenterContainer/VBoxContainer/music"]
+custom_minimum_size = Vector2(300, 86)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="sfx" type="HBoxContainer" parent="volume_menu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="volume_menu/CenterContainer/VBoxContainer/sfx"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Sounds"
+
+[node name="sfx_slider" type="HSlider" parent="volume_menu/CenterContainer/VBoxContainer/sfx"]
+custom_minimum_size = Vector2(300, 86)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="voice" type="HBoxContainer" parent="volume_menu/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="volume_menu/CenterContainer/VBoxContainer/voice"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Voices"
+
+[node name="voice_slider" type="HSlider" parent="volume_menu/CenterContainer/VBoxContainer/voice"]
+custom_minimum_size = Vector2(300, 86)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="back_button" type="Button" parent="volume_menu"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 292.0
+offset_bottom = 123.0
+text = "← Back"
+
+[node name="back_volume_button" type="Button" parent="volume_menu"]
+visible = false
+layout_mode = 0
+offset_left = 1752.0
+offset_top = 32.0
+offset_right = 1888.0
+offset_bottom = 168.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_he1wk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_80ibt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pk4aj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kvjm5")
+theme_override_styles/focus = SubResource("StyleBoxTexture_v7xfd")
+
+[node name="keybinding_menu" parent="." instance=ExtResource("4_hga0d")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/sounds_button" to="." method="_on_sounds_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/keybindings_button" to="." method="_on_keybindings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/tutorial_button" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/credits_button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
+[connection signal="hide_menu" from="volume_menu" to="." method="_on_volume_menu_hide_menu"]
+[connection signal="value_changed" from="volume_menu/CenterContainer/VBoxContainer/master/master_slider" to="volume_menu" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="volume_menu/CenterContainer/VBoxContainer/music/music_slider" to="volume_menu" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="volume_menu/CenterContainer/VBoxContainer/sfx/sfx_slider" to="volume_menu" method="_on_sounds_slider_value_changed"]
+[connection signal="value_changed" from="volume_menu/CenterContainer/VBoxContainer/voice/voice_slider" to="volume_menu" method="_on_voices_slider_value_changed"]
+[connection signal="pressed" from="volume_menu/back_button" to="volume_menu" method="_on_back_button_pressed"]
+[connection signal="pressed" from="volume_menu/back_volume_button" to="volume_menu" method="_on_back_volume_button_pressed"]
+[connection signal="hide_menu" from="keybinding_menu" to="." method="_on_keybinding_menu_hide_menu"]
