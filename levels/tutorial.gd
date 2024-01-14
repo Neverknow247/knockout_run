@@ -11,6 +11,7 @@ var sounds = Sounds
 @onready var finish = $finish
 @onready var lasers = $lasers
 @onready var animation_player = $ui/AnimationPlayer
+@onready var checkpoint = $checkpoint
 
 var login_board = "res://addons/silent_wolf/Auth/Login.tscn"
 var menu_board = "res://menus/main_menu.tscn"
@@ -26,7 +27,8 @@ func _ready():
 		laser.connect("player_dead",player_dead)
 
 func player_dead():
-	reset_scene()
+	player.velocity = Vector2.ZERO
+	player.position = checkpoint.position
 
 func reset_scene():
 	animation_player.play("fade_out")
@@ -57,3 +59,13 @@ func _on_dash_area_body_entered(body):
 
 func _on_slide_area_body_entered(body):
 	player.has_slide = true
+
+func _on_volume_button_pressed():
+	#get_tree().paused = true
+	player.set_physics_process(false)
+	$ui/volume_menu.show()
+
+func _on_volume_menu_hide_menu():
+	#get_tree().paused = false
+	await get_tree().create_timer(stats.transition_time).timeout
+	player.set_physics_process(true)

@@ -3,8 +3,9 @@ extends Control
 var stats = Stats
 var sounds = Sounds
 
-@onready var volume_menu = $volume_menu
+var tutorial_scene = "res://levels/tutorial.tscn"
 
+@onready var volume_menu = $volume_menu
 @onready var start_button = $CenterContainer/HBoxContainer/VBoxContainer/start_button
 @onready var logged_in_user = $logged_in_user
 @onready var login = $VBoxContainer2/login
@@ -87,3 +88,9 @@ func _on_leaderboard_button_pressed():
 
 func _on_color_picker_button_color_changed(color):
 	stats.save_data["runner_color"] = Color(color)
+
+func _on_tutorial_button_pressed():
+	get_tree().change_scene_to_file(tutorial_scene)
+
+func _on_settings_button_pressed():
+	pass # Replace with function body.

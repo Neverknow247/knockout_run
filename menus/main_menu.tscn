@@ -164,8 +164,23 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_p57df")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_altli")
 text = "Start"
 
+[node name="tutorial_button" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u1nd2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_r2oow")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_m3qti")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_p57df")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_altli")
+text = "Tutorial"
+
 [node name="settings_button" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -289,6 +304,8 @@ environment = SubResource("Environment_tn8g0")
 [connection signal="pressed" from="VBoxContainer2/logout" to="." method="_on_logout_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer2/leaderboard_button" to="." method="_on_leaderboard_button_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/tutorial_button" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/settings_button" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/credits_button" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
 [connection signal="color_changed" from="change_color/CenterContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]

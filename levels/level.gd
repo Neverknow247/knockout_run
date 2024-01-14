@@ -156,9 +156,9 @@ func update_score():
 
 func _on_finish_level_complete():
 	pausable = false
+	timer.timer_on = false
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("clapping",randf_range(.9,1.2), -5)
-	timer.timer_on = false
 	var new_best = update_score()
 	SaveAndLoad.update_save_data()
 	ui.level_finished(record_time, level_name, level_id, new_best)
