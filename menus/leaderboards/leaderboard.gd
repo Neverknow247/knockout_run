@@ -68,12 +68,18 @@ var world_tabs_num = 0
 
 var level_names = [
 	"Knockout Run",
-	"Sheep"
+	"Sheep",
+	"Toilet",
+	"Doggo",
+	"Firehazard",
 ]
 
 var ld_names = [
 	"level_1_1",
-	"level_sheep"
+	"level_sheep",
+	"level_toilet",
+	"level_doggo",
+	"level_firehazard",
 ]
 
 var unlocked_ld_names = []

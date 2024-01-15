@@ -6,8 +6,18 @@ var stats = Stats
 @export var stats_level_name : String
 @export var secret_level : String
 @export var sound_effect : String
+@export var sdb = 10
+
+signal change_scene(new_scene)
+
+func _ready():
+	if stats.dev_mode:
+		pass
+		#$CollisionShape2D.disabled = true
+		#hide()
 
 func _on_body_entered(body):
-	sounds.play_sfx(sound_effect,randf_range(1.2,1.5),10)
+	sounds.play_sfx(sound_effect,randf_range(1.2,1.5),sdb)
 	stats.save_data[stats_level_name]["unlocked"] = true
-	get_tree().change_scene_to_file(secret_level)
+	change_scene.emit(secret_level)
+

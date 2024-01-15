@@ -202,3 +202,17 @@ func move_comets(delta):
 			child.modulate.a = inverse_lerp(0, fade_distance, distance-invis_distance)
 		else:
 			child.modulate.a = 1
+
+
+func _on_egg_teleport_change_scene(new_scene):
+	call_deferred("change_scene",new_scene)
+
+func _on_egg_teleport_2_change_scene(new_scene):
+	call_deferred("change_scene",new_scene)
+
+func _on_egg_teleport_3_change_scene(new_scene):
+	call_deferred("change_scene",new_scene)
+
+func change_scene(new_scene):
+	get_tree().change_scene_to_file(new_scene)
+	

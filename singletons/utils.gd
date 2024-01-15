@@ -3,7 +3,7 @@ extends Node
 var stats = Stats
 
 var volume_settings = {
-	"master_volume" = 1,
+	"master_volume" = .5,
 	"music_volume" = 1,
 	"sfx_volume" = 1,
 	"voice_volume" = 1

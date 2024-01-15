@@ -89,3 +89,10 @@ func _on_volume_menu_hide_menu():
 	#get_tree().paused = false
 	await get_tree().create_timer(stats.transition_time).timeout
 	player.set_physics_process(true)
+
+
+func _on_egg_teleport_change_scene(new_scene):
+	call_deferred("change_scene",new_scene)
+
+func change_scene(new_scene):
+	get_tree().change_scene_to_file(new_scene)

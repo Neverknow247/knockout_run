@@ -21,6 +21,7 @@ var sfx = {
 	"go" : load(sfx_path+"go.wav"),
 	"clapping" : load(sfx_path+"clapping.wav"),
 	"baaa" : load(sfx_path+"baaa.wav"),
+	"glass_1" : load(sfx_path+"glass_1.wav"),
 #	"" : load(sfx_path+".wav"),
 	}
 
